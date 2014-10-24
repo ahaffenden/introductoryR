@@ -12,10 +12,10 @@
 # Slide: Coed-y-Brenin survey data
 #=================================
 rm(list=ls())
-setwd("C:/Users/red74/Documents/GitHub/introductoryR/2. swirl_open_intro/")
+setwd("")
 
 # All trees recorded in CyB7 in 2011
-population <- read.table("CyB_data.csv", header = T, sep = ",")
+population <- 
 
 # inspect the elements
 head(population, 3)
