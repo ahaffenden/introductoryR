@@ -3,14 +3,8 @@ brief_intro_R.ppt
 *.Rhistory
 *.pper
 .Rproj.user*
-2. swirl_open_intro/.~lock.CyB_data_1.csv#
-2. swirl_open_intro/~$Introduction to statistical inference.pptx
-2. swirl_open_intro/open_intro_lecturer.R
-2. swirl_open_intro/Introduction to statistical inference.pptx
-2. swirl_open_intro/images*
-*.png
-2. open_intro/Introduction to statistical inference.pptx
-2. open_intro/open_intro_lecturer.R
+*Rproj
+.gitignore
 1.air_pollution_practical/lecturer_ignore*
 2. statistical_inference/lecturer_ignore*
 3. nitrate_practical/lecturer_ignore*
