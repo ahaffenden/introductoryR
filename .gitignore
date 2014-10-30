@@ -3,8 +3,8 @@ brief_intro_R.ppt
 *.Rhistory
 *.pper
 .Rproj.user*
-*Rproj
-.gitignore
+introductoryR.Rproj
+*.gitignore*
 1.air_pollution_practical/lecturer_ignore*
 2. statistical_inference/lecturer_ignore*
 3. nitrate_practical/lecturer_ignore*
