@@ -14,7 +14,7 @@
 rm(list=ls())
 setwd("")
 
-# All trees recorded in CyB7 in 2011
+# All DF trees recorded in CyB7 in 2011 (CyB_data_DF.csv)
 population <- 
 
 # inspect the elements
@@ -164,7 +164,7 @@ abline(v = mean(population$DBH), col = "red")
 # as well as DF
 setwd("C:/Users/red74/Documents/GitHub/introductoryR/2. swirl_open_intro/")
 
-data_in <- read.csv("CyB_data_1.csv", header = T, sep =",")
+data_in <- read.csv("CyB_data_DF_HWD.csv", header = T, sep =",")
 #================================
 # Testing hypotheses using confidence intervals
 #===========
