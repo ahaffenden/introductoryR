@@ -12,9 +12,12 @@
 # Slide: Coed-y-Brenin survey data
 #=================================
 rm(list=ls())
+
+# set your working directory to "2. statistical inference"
 setwd("")
 
-# All DF trees recorded in CyB7 in 2011 (CyB_data_DF.csv)
+# Read in the data file which contains all DF trees recorded 
+# in CyB7 in 2011 (CyB_data_DF.csv)
 population <- 
 
 # inspect the elements
@@ -25,26 +28,36 @@ summary(population)
 # Create histograms side by side to show
 # population$DBH and population$height
 # as per slide
+...
+...
+...
 
+#==============================================
+# Variability in estimates
 #====================
 # Sample of 100 trees from the population to represent data collection
 sample1 <- population[sample(nrow(population), 100),]
 
-# Plot these two histograms side by side to compare
-# to the entire population
+# Plot these two histograms side by side
+...
+...
+...
 
-#==============================================
-# Variability in estimates
 #=========================
 
 # Point estimates - sampling variation
 # Create new sample: sample2
+sample2 <- 
 
-# compare the three samples that we now have in the workspace
-summary(sample1)
-summary(sample2)
-summary(population)
-
+# Plot these two histograms side by side 
+...
+...
+...
+#======================
+# summarise the three samples that we now have in the workspace
+summary()
+...
+...
 #==============================================
 # Point estimates are not exact
 #=========================
@@ -97,8 +110,8 @@ for(i in 1:1000) {
 # plot the sample mean distribution
 hist(sample_mean_dist, main = "", xlab = "Sample mean")
 
-abline(v = mean(population$DBH))
-abline(v = mean(sample_mean_dist))
+abline(v = mean(population$DBH), col = "red")
+abline(v = mean(sample_mean_dist), col = "black")
 
 # Then plot the means of our two samples
 abline(v = mean(sample1$DBH), col = "red")
@@ -162,7 +175,6 @@ abline(v = mean(population$DBH), col = "red")
 #===================
 # Bring in a new dataset that includes HWD tree species
 # as well as DF
-setwd("C:/Users/red74/Documents/GitHub/introductoryR/2. swirl_open_intro/")
 
 data_in <- read.csv("CyB_data_DF_HWD.csv", header = T, sep =",")
 #================================
