@@ -1,15 +1,15 @@
 # Introduction to R using the Hull air pollution data 2003 - 2008. 
 # Austin Haffenden 03Oct12
-# Modified: 15Oct15
+# Modified: 14Oct14
 #==========================================================================
 # Introduction
 #============
-# This script is a guided investigation of Hull air pollution data dating 
-# from 2003 to 2008. The data is in micro grams per cubic metre (µg m-3)
+# This script is a guided investigation Hull air pollution data dating from
+# 2003 to 2008. The data is in micro grams per cubic metre (µg m-3)
 # The tasks set are:
 #=====
-# 1.  Use the air pollution data to calculate the following for ozone 
-#     levels from the 2003 and 2008 data:
+# 1.  Use the air pollution data calculate the following for ozone levels 
+#     from the 2003 and 2008 data:
 #     a. Mean
 #     b. Mode
 #     c. Median
@@ -19,9 +19,9 @@
 #================
 # 2. Illustrate the ozone data for 2003 and 2008 using a histogram:
 #     a) Determine an appropriate class interval. The easiest method to 
-#        define the class intervals is to find the minimum and maximum 
-#        values and then calculate the range of 5-7 equally sized class
-#        intervals.
+#       define the class intervals is to find the minimum and maximum 
+#       values and then calculate the range of 5-7 equally sized class
+#       intervals.
 #================
 # 3. Use a statistical test to decide if there is a significant difference 
 #    in the average pollutant levels measured in 2003 and 2008.
@@ -35,11 +35,7 @@
 #==========================================================================
 # R Introduction:
 # 
-# Before we can carry out the analysis you should:
-# 1. Save this script with a different, unique, name
-# 2. Make the data file read only
-#
-# Now we need to bring the data into R
+# Before we can carry out the analysis we need to bring the data into R
 #================
 # clear the workspace (memory) of data so that there isn't any confusion
 rm(list=ls() )
@@ -59,15 +55,15 @@ setwd("C:/Users/red74/Documents/Teaching/ESC40007_Spatial_Geoscience/data")
 # read in the data to a data structure called "data_in"
 data_in <- read.csv("hull_air_pollution_data_2003_2008.csv")
 
-# This is essentially an excel file saved as a .csv file. 
-# It has been modified in the following ways:
+# This is an excel file saved as a .csv file. It has been modified
+# in the following ways:
 #   1. surplus column headings have been deleted so the top row is the 
 #      variable names
-#   2. the variable names have been changed so that R accepts them (no 
+#   2. the variable names have been changed so that r accepts them (no 
 #      gaps or random characters)
 #   3. numbers have been converted to their full lengths
-#   4. I have added a row for the 29/02/2008 (even though this doesn't 
-#      exist) so that the 2003 and 2008 data are the same length
+#   4. I have added a row for the 29/02/2008 (even though this doesn't exist) filled with NA
+#      so that the 2003 and 2008 data are the same length
 #   5. blank spaces have been replaced by "NA" which R accepts as a null 
 #      value (not the same as 0)
 #=================
@@ -102,7 +98,7 @@ data_in <- read.csv("hull_air_pollution_data_2003_2008.csv",
 data_in # prints the whole file to screen. It should now be in regular rows. 
         # Shout if it isn't!
 
-# print the first six lines (by default) to screen by passing the name of the 
+# print the first six lines to screen by passing the name of the 
 # data_structure to the function head()
 head(data_in) 
 
@@ -131,11 +127,11 @@ names(data_in) # column headers - compare these with the data file
 # Task 1.Using the air pollution data calculate the following for ozone 
 # levels from the 2003 and 2008 data:
 #   a. Mean
-#   b. Median
-#   c. Minimum
-#   d. Maximum
-#   e. Standard deviation
-#   f. Mode
+#   b. Mode
+#   c. Median
+#   d. Minimum
+#   e. Maximum
+#   f. Standard deviation
 #==========================================================================
 # The in built summary function provides: Min, 1st quartile, Median, Mean, 
 # 3rd quartile, Max
@@ -165,62 +161,63 @@ summary(data_in[,"ozo_03"])
 
 # This is one of the strengths of R: you can carry out operations on 
 # multiple data at the same time
-#================
-# We can also find these values by calling a 'function' by its name
-# What is a function? 
-
-#   a. Mean
-mean(data_in$ozo_03)
-# [1] NA
-mean(data_in$ozo_03, na.rm=TRUE)
-# [1] 43.904
-
-#   b. Median
-median(data_in$ozo_03, na.rm=TRUE)
-
-#   c. Minimum
-min(data_in$ozo_03, na.rm=TRUE)
-#   d. Maximum
-max(data_in$ozo_03, na.rm=TRUE)
-
-#   e. Standard deviation
-sd(data_in$ozo_03, na.rm=TRUE)
-#   f. Mode
-...
-
-# the function for mode is not standard in built R functions. 
-# We will need to  import a seperate function from a library 
+#=======================
+# Mode, Median and Standard Deviation are not standard in built R 
+# functions. We will need to  import seperate functions from a library 
 # (Package). To find which library you need it is usually sufficient to 
-# do a Google search. Search now for "mode R" (without ""). 
-# 
-# Look for the 'cran' package repository "cran.r-project.org"
-# and the package 'modeest'
-# Open the pdf that describes the package
+# do a Google search. Search now for "Standard deviation 
+# R" (without ""). The top link should be: 
+# http://stat.ethz.ch/R-manual/R-patched/library/stats/html/sd.html
+#
+# Click on it. This gives a description of the function and the package 
+# it is from {stats}. # {stats} denotes that it is a library called 'stats'.
+# This page layout also shows that it is an official piece of R documentation. 
+# NOTE: Stats package is no included as a base package in R
+# If we click on the index link at the bottom of the page it takes 
+# us to the documentation page for the stats library. Scrolling down we can 
+# find that there is also a function for "median" (though not for mode)
 #======================
-# First lets check that the package "modeest" is not already installed
+# First lets check that the package "stats" is not already installed
 installed.packages()
 
-# If the package is already installed (it shouldn't be) you would  
-# need to complete one of these two steps 
+# If the package is already installed (it should be) you would not 
+# normally need to complete the next steps 
+# but it will be useful to go through them anyway. 
 #======================
 # There are (at least) two ways to install packages.
 
 # 1. Download from the command prompt. 
 # select the download location:
 chooseCRANmirror()
-# tell R which package to download. This downloads the "modeest" package 
-# and any other packages that it relies on: dependencies = TRUE
-install.packages("modeest", dependencies = TRUE)
+# tell R which package to download. This downloads the "Stats" package and any other packages that it
+# relies on: dependencies = TRUE
+install.packages("stats", dependencies = TRUE)
 
 # 2. Is to use the menu bar at the top of the RGui. What is the RGui?
 # Select: Packages -> Set CRAN mirror -> 
 #         UK (Bristol, London or St Andrews) -> OK
-# Select the package from the list
-#======================================
+# Select the package from the list - as you can see for the "stats" 
+# package we need to install it manually. This may be for a variety 
+# of reasons e.g.: because it is no longer supported or actively developed 
+# or because it is included in current versions of R (as stats is). 
+
 # Now we have the package installed we need to load the library into 
 # the workspace. Essentially this informs R that we want to use the
 # functions in this package
-library(modeest)
+library(stats)
+
+# Next calculate the Median value
+median(data_in$ozo_03, na.rm=TRUE)
+
+# calculate the standard deviation
+sd(data_in$ozo_03, na.rm=TRUE)
+
+# To find the mode we need to install a different package called "modeest"
+# Check it isn't already installed...
+
+# If necessary install it...
+
+# Load the library to the workspace...
 
 # get the mode for the variable (column) that we want
 mfv(data_in$ozo_03) # mfv = most frequent value(s).  
@@ -373,7 +370,7 @@ axis(1, at=ax_breaks, labels = x_labels, tick = F)
 # Ozone 2003
 shapiro.test(data_in$ozo_03)
 # Ozone 2008
-...
+
 # If the data is normally distributed we use the t.test
 t.test(data_in$ozo_03, data_in$ozo_08)
 # If the data is non-normally distributed we use the Mann-Whitney U Test
