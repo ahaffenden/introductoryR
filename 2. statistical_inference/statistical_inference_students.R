@@ -21,8 +21,8 @@ setwd("")
 population <- 
 
 # inspect the elements
-head(population, 3)
-tail(population, 1)
+... # first 3 rows
+... # last 1 row
 summary(population)
 
 # Create histograms side by side to show
@@ -110,18 +110,20 @@ for(i in 1:1000) {
 # plot the sample mean distribution
 hist(sample_mean_dist, main = "", xlab = "Sample mean")
 
+# plot the mean of the actual population
 abline(v = mean(population$DBH), col = "red")
+# plot the mean of the sample distribution that we have just created
 abline(v = mean(sample_mean_dist), col = "black")
 
 # Then plot the means of our two samples
 abline(v = mean(sample1$DBH), col = "red")
 abline(v = mean(sample2$DBH), col = "red")
 #===================================
-# Standard error of population mean
+# Standard error of sample mean
 #==================================
-pop_se <- sd(population$DBH)/sqrt(100)
-
 samp_se <- sd(sample1$DBH)/sqrt(100)
+
+pop_se <- sd(population$DBH)/sqrt(100)
 
 #==========================================================================
 # Confidence intervals
@@ -198,6 +200,8 @@ mean(hwd_sample_dbh)
 # Calculate the Confidence Intervals for the mean of df_sample_dbh as we 
 # did earlier
 
+
+# does the mean of the HWD species fall within the confidence intervals? 
 #=============
 # Tree height
 #============
